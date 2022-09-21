@@ -1,0 +1,44 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin: 3% 10% 0 10%;
+}
+
+.calculadora {
+    width: 15%;
+    height: 25rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas:
+        "screen screen screen screen"
+        "divi divi multi menos"
+        "siete ocho nueve mas"
+        "cuatro cinco seis mas"
+        "uno dos tres igual"
+        "cero cero punto igual";
+    border: solid 5px black;
+}
+.siete { grid-area: siete; }
+.ocho { grid-area: ocho; }
+.nueve { grid-area: nueve; }
+.cuatro { grid-area: cuatro; }
+.cinco { grid-area: cinco; }
+.seis { grid-area: seis; }
+.mas { grid-area: mas; }
+.divi { grid-area: divi; }
+.multi { grid-area: multi; }
+.menos { grid-area: menos; }
+.screen { grid-area: screen; }
+.uno { grid-area: uno; }
+.dos { grid-area: dos; }
+.tres { grid-area: tres; }
+.igual { grid-area: igual; }
+.cero { grid-area: cero; }
+.punto { grid-area: punto; }

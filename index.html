@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Scripts-->
+    <script src="./assets/js/001.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="calculadora">
+            <input class="screen">
+            <button class="divi" value="Cerrar ventana secundaria" onclick="cerrarVentana()">/</button>
+            <button class="multi">*</button>
+            <button class="menos">-</button>
+            <button class="siete">7</button>
+            <button class="ocho">8</button>
+            <button class="nueve">9</button>
+            <button class="mas" onclick=close()>+</button>
+            <button class="cuatro">4</button>
+            <button class="cinco">5</button>
+            <button class="seis">6</button>
+            <button class="uno">1</button>
+            <button class="dos">2</button>
+            <button class="tres">3</button>
+            <button class="igual" onclick="alert('chupalo')">=</button>
+            <button class="cero">0</button>
+            <button class="punto">.</button>
+        </div>
+
+</body>
+
+<script>
+    function cerrarVentana(){
+              //la referencia de la ventana es el objeto window del popup. Lo utilizo para acceder al método close
+              window.close();
+    }
+</script>
+</html>
