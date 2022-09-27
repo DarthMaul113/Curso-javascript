@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/mathjs@11.2.1/" type="text/javascript"></script>
+    <!--Stylesheet-->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h1>Calculadora de Índices Financieros</h1>
+    </header>
+    <main>
+        <fieldset>
+            <select id="selector">
+                <option value="uf">UF</option>
+                <option value="utm">UTM</option>
+                <option value="dolar">DOLAR</option>
+                <option value="euro">EURO</option>
+            </select>
+            <input type="number" id="valor1" placeholder="Ingrese un valor">
+            <select id="selector">
+                <option value="clp">CLP</option>
+                <!--
+                <option value="uf">UF</option>
+                <option value="utm">UTM</option>
+                <option value="dolar">DOLAR</option>
+                <option value="euro">EURO</option>
+                -->
+            </select>
+            <input type="number" id="valor2" placeholder="Ingrese un valor">
+        </fieldset>
+        <!--Estructura Calculadora-->
+        <div class="container">
+            <div class="calculadora">
+                <input class="screen">
+                <button class="divi">/</button>
+                <button class="multi">*</button>
+                <button class="menos">-</button>
+                <button class="siete">7</button>
+                <button class="ocho">8</button>
+                <button class="nueve">9</button>
+                <button class="mas">+</button>
+                <button class="cuatro">4</button>
+                <button class="cinco">5</button>
+                <button class="seis">6</button>
+                <button class="uno">1</button>
+                <button class="dos">2</button>
+                <button class="tres">3</button>
+                <button class="igual" onclick="">=</button>
+                <button class="cero">0</button>
+                <button class="punto">.</button>
+            </div>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+<!--Scripts-->
+<script type="module" src="../assets/js/calculos.js"></script>
+<script type="module" src="../assets/js/indicadores.js"></script>
+
+</html>
