@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <script src="https://unpkg.com/mathjs@11.2.1/" type="text/javascript"></script>
     <!--Stylesheet-->
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
     <title>Document</title>
 </head>
@@ -16,26 +17,46 @@
     <header>
         <h1>Calculadora de Índices Financieros</h1>
     </header>
+
     <main>
-        <fieldset>
-            <select id="selector">
-                <option value="uf">UF</option>
-                <option value="utm">UTM</option>
-                <option value="dolar">DOLAR</option>
-                <option value="euro">EURO</option>
-            </select>
-            <input type="number" id="valor1" placeholder="Ingrese un valor">
-            <select id="selector">
-                <option value="clp">CLP</option>
-                <!--
-                <option value="uf">UF</option>
-                <option value="utm">UTM</option>
-                <option value="dolar">DOLAR</option>
-                <option value="euro">EURO</option>
-                -->
-            </select>
-            <input type="number" id="valor2" placeholder="Ingrese un valor">
-        </fieldset>
+        <input type="hidden" id="UF"></input>
+        <input type="hidden" id="Dolar"></input>
+        <input type="hidden" id="Euro"></input>
+        <input type="hidden" id="UTM"></input>
+        <div class="container">
+            <fieldset>
+                <select id="selector1">
+                    <option value="uf" selected>UF</option>
+                    <option value="utm">UTM</option>
+                    <option value="dolar">DOLAR</option>
+                    <option value="euro">EURO</option>
+                </select>
+
+                <input type="number" id="valor1" placeholder="Ingrese un valor">
+
+                <select id="selector2">
+                    <option value="clp">CLP</option>
+                    <!--
+                    <option value="uf">UF</option>
+                    <option value="utm">UTM</option>
+                    <option value="dolar">DOLAR</option>
+                    <option value="euro">EURO</option>
+                    -->
+                </select>
+
+                <input type="number" id="valor2" placeholder="Ingrese un valor">
+            </fieldset>
+        </div>
+
+
+        <div class="container">
+            <br>
+            <br>
+            <p style="text-align: center">
+                La calculadora será parte de la simulación sobre un sitio de información financiera
+            </p>
+        </div>
+
         <!--Estructura Calculadora-->
         <div class="container">
             <div class="calculadora">
@@ -57,13 +78,14 @@
                 <button class="cero">0</button>
                 <button class="punto">.</button>
             </div>
+        </div>
     </main>
     <footer>
 
     </footer>
+
+    <!--Scripts-->
+    <script type="module" src="../assets/js/indicadores.js"></script>
 </body>
-<!--Scripts-->
-<script type="module" src="../assets/js/calculos.js"></script>
-<script type="module" src="../assets/js/indicadores.js"></script>
 
 </html>

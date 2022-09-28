@@ -3,7 +3,14 @@
     margin: 0;
     box-sizing: border-box;
 }
-
+.container fieldset{
+    width: 75%;
+    text-align: center;
+}
+fieldset{
+    display: flex;
+    justify-content: space-evenly;
+}
 .container {
     display: flex;
     justify-content: center;
