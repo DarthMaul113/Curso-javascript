@@ -13,13 +13,9 @@ function Indicators() {
     })
 }
 
-var intervalId = window.setInterval(function () {
-    do {
-        var i = 1
-        i++
-        switcher();
-    } while (i<=10)
-}, 5000);
+var intervalId = window.setInterval(function(){
+    switcher();
+  }, 1000);
 
 
 document.getElementById("selector1").addEventListener("click", switcher)
