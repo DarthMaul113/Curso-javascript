@@ -1,7 +1,7 @@
-//El boton  debe llamar a historial
-let button = document.querySelector('#historial');
+//El boton  debe llamar a tabla valores
+let button = document.querySelector('#Valores');
 button.addEventListener('click', () => {
-    historial();
+    tablaIndicadores();
 });
 
 window.onload = Indicators();
@@ -21,14 +21,24 @@ function Indicators() {
         console.log("Requestfailed", error)
     })
 
+    let i = 0
+    while (i < 4) {
+        let valUF = localStorage.getItem("UF")
+        let valUTM = localStorage.getItem("UTM")
+        let valDolar = localStorage.getItem("DOLAR")
+        let valEuro = localStorage.getItem("EURO")
+        document.getElementById("iniUF").innerText = valUF
+        document.getElementById("iniUTM").innerText = valUTM
+        document.getElementById("iniDolar").innerText = valDolar
+        document.getElementById("iniEuro").innerText = valEuro
+        i++
+    }
+
 }
-
-
 
 var intervalId = window.setInterval(function () {
     switcher();
 }, 1000);
-
 
 document.getElementById("selector1").addEventListener("click", switcher)
 
@@ -68,8 +78,7 @@ function switcher() {
     }
 }
 
-function historial() {
-    Indicators()
+function tablaIndicadores() {
     const fecha = new Date();
 
     //Declaracion de variables
@@ -79,15 +88,15 @@ function historial() {
     let euro = document.getElementById("Euro").value
     let hoy = `${fecha.getDate()}-${fecha.getMonth() + 1}-${fecha.getFullYear()}`;
     let hora = `${fecha.getHours()}:${(fecha.getMinutes() < 10 ? '0' : '') + fecha.getMinutes()}`;
-    let tipo;
-    let valor;
-    let registroHistorial = [];
+    let tipo
+    let valor
+    let registroValores = [];
 
     //Crear tabla donde se almacenan los datos
     const crearVal = () => {
-        let valTablaDiv = document.querySelector("div.tablaHistorialDiv")
-        let table = document.querySelector("table.tablaHistorial")
-        let tableHead = document.querySelector("thead.tablaHistorialHead")
+        let valTablaDiv = document.querySelector("div.tablaValDiv")
+        let table = document.querySelector("table.tablaVal")
+        let tableHead = document.querySelector("thead.tablaValHead")
 
         //Ciclo para recorrer el largo del arreglo tiposInd
         let index = 0
@@ -106,11 +115,15 @@ function historial() {
             let valHora = document.createElement("th")
             valHora.className = "valHora"
 
+            //Creacion de local storage
+            const guardarStorage = (id, valor) => { localStorage.setItem(id, valor) }
+            guardarStorage(registroValores[index].tipo, [registroValores[index].tipo +" tuvo un valor de: "+ registroValores[index].valor+ " CLP el dia " +registroValores[index].fecha])
+
             //Llamada a los objetos que almacenan los datos
-            valTipo.innerText = registroHistorial[index].tipo
-            valValor.innerText = registroHistorial[index].valor
-            valDia.innerText = registroHistorial[index].fecha
-            valHora.innerText = registroHistorial[index].hora
+            valTipo.innerText = registroValores[index].tipo
+            valValor.innerText = registroValores[index].valor
+            valDia.innerText = registroValores[index].fecha
+            valHora.innerText = registroValores[index].hora
 
             //Se adjuntan las variables correspondientes a cada parte de la tabla
             valTablaRow.append(valTipo)
@@ -141,19 +154,19 @@ function historial() {
             case "UF":
                 tipo = "UF"
                 valor = uf
-                registroHistorial[1] = new registro(hoy, hora, tipo, valor);
+                registroValores[1] = new registro(hoy, hora, tipo, valor);
             case "UTM":
                 tipo = "UTM"
                 valor = utm
-                registroHistorial[2] = new registro(hoy, hora, tipo, valor);
+                registroValores[2] = new registro(hoy, hora, tipo, valor);
             case "DOLAR":
                 tipo = "DOLAR"
                 valor = dolar
-                registroHistorial[3] = new registro(hoy, hora, tipo, valor);
+                registroValores[3] = new registro(hoy, hora, tipo, valor);
             case "EURO":
                 tipo = "EURO"
                 valor = euro
-                registroHistorial[4] = new registro(hoy, hora, tipo, valor);
+                registroValores[4] = new registro(hoy, hora, tipo, valor);
             default:
                 tipo = "error"
                 break
