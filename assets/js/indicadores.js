@@ -21,18 +21,16 @@ function Indicators() {
         console.log("Requestfailed", error)
     })
 
-    let i = 0
-    while (i < 4) {
-        let valUF = localStorage.getItem("UF")
-        let valUTM = localStorage.getItem("UTM")
-        let valDolar = localStorage.getItem("DOLAR")
-        let valEuro = localStorage.getItem("EURO")
-        document.getElementById("iniUF").innerText = valUF
-        document.getElementById("iniUTM").innerText = valUTM
-        document.getElementById("iniDolar").innerText = valDolar
-        document.getElementById("iniEuro").innerText = valEuro
-        i++
-    }
+    //Historial de valores segun datos de local storage
+    let valUF = JSON.parse(localStorage.getItem("UF"))
+    let valUTM = JSON.parse(localStorage.getItem("UTM"))
+    let valDolar = JSON.parse(localStorage.getItem("DOLAR"))
+    let valEuro = JSON.parse(localStorage.getItem("EURO"))
+    document.getElementById("iniUF").innerText = "El valor de la " + valUF.tipo + " fue de " + valUF.valor + " CLP el dia " + valUF.fecha
+    document.getElementById("iniUTM").innerText = "El valor de la " + valUTM.tipo + " fue de " + valUTM.valor + " CLP el dia " + valUTM.fecha
+    document.getElementById("iniDolar").innerText = "El valor del " + valDolar.tipo + " fue de " + valDolar.valor + " CLP el dia " + valDolar.fecha
+    document.getElementById("iniEuro").innerText = "El valor del " + valEuro.tipo + " fue de " + valEuro.valor + " CLP el dia " + valEuro.fecha
+
 
 }
 
@@ -51,7 +49,6 @@ function switcher() {
     let dolar = document.getElementById("Dolar").value
     let euro = document.getElementById("Euro").value
     let valor1 = document.getElementById("valor1").value
-    let valor2 = document.getElementById("valor2").innerHTML
     let res = 0
 
     //Segun el selector se realiza el calculo necesario
@@ -116,8 +113,12 @@ function tablaIndicadores() {
             valHora.className = "valHora"
 
             //Creacion de local storage
+            //El local storage guarda los valores de la tabla luego llamar por lo menos una vez a la funcion tablaIndicadores
             const guardarStorage = (id, valor) => { localStorage.setItem(id, valor) }
-            guardarStorage(registroValores[index].tipo, [registroValores[index].tipo +" tuvo un valor de: "+ registroValores[index].valor+ " CLP el dia " +registroValores[index].fecha])
+            const obj = JSON.stringify(registroValores[index])
+
+            guardarStorage(registroValores[index].tipo, obj)
+
 
             //Llamada a los objetos que almacenan los datos
             valTipo.innerText = registroValores[index].tipo
