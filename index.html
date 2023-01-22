@@ -17,96 +17,80 @@
 
 <body>
     <header>
-        <h1>Calculadora de Índices Financieros</h1>
+        <h1>Simulación de Índices Financieros</h1>
     </header>
 
     <main>
-        <input type="hidden" id="UF"></input>
-        <input type="hidden" id="Dolar"></input>
-        <input type="hidden" id="Euro"></input>
-        <input type="hidden" id="UTM"></input>
-        <div class="container">
+        <table id="headVal" class="container">
+            <thead >
+                <tr>
+                    <th>
+                        <div>UF</div>
+                    <th>
+                        <div>UTM</div>
+                    </th>
+                    <th>
+                        <div>DOLAR</div>
+                    </th>
+                    <th>
+                        <div>EURO</div>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <div class="infoInd" id="UF"></div>
+                    </th>
+                    <th>
+                        <div class="infoInd" id="UTM"></div>
+                    </th>
+                    <th>
+                        <div class="infoInd" id="DOLAR"></div>
+                    </th>
+                    <th>
+                        <div class="infoInd" id="EURO"></div>
+                    </th>
+                </tr>
+            </thead>
+
+        </table>
+
+        <div id="balanza" class="container">
             <fieldset>
-                <select id="selector1">
-                    <option value="uf" selected>UF</option>
-                    <option value="utm">UTM</option>
-                    <option value="dolar">DOLAR</option>
-                    <option value="euro">EURO</option>
-                </select>
+                <div id="box1">
+                    <select id="selector1">
+                        <option value="uf" selected>UF</option>
+                        <option value="utm">UTM</option>
+                        <option value="dolar">DOLAR</option>
+                        <option value="euro">EURO</option>
+                    </select>
+                    <input type="number" id="valor1" value="1">
+                </div>
 
-                <input type="number" id="valor1" placeholder="Ingrese un valor">
-
-                <select id="selector2">
-                    <option value="clp">CLP</option>
-                    <!--
-                    <option value="uf">UF</option>
-                    <option value="utm">UTM</option>
-                    <option value="dolar">DOLAR</option>
-                    <option value="euro">EURO</option>
-                    -->
-                </select>
-
-                <input type="text" id="valor2" disabled>
+                <div id="box2">
+                    <select id="selector2">
+                        <option value="clp">CLP</option>
+                    </select>
+                    <input type="text" id="valor2" disabled>
+                </div>
             </fieldset>
         </div>
-        <div class="container">
-            <table>
-                <tr>
-                    <th id="iniUF"></th>
-                </tr>
-                <tr>
-                    <th id="iniUTM"></th>
-                </tr>
-                <tr>
-                    <th id="iniDolar"></th>
-                </tr>
-                <tr>
-                    <th id="iniEuro"></th>
-                </tr>
-            </table>
-        </div>
-        <button id="Valores">Mostrar Tabla</button>
-        <div class="tablaValDiv">
-            <table class="tablaVal">
-                <thead class="tablaValHead">
-                    <tr>
-                        <th>Tipo</th>
-                        <th>Valor</th>
-                        <th>Día</th>
-                        <th>Hora</th>
-                    </tr>
 
-                </thead>
-            </table>
-        </div>
+        <div id="infoVal" class="container">
 
+            <div class="tablaValDiv">
+                <table id="tablaActual" class="tablaVal">
+                    <thead class="tablaValHead">
 
-        <div class="container">
-            <br>
-            <br>
-        </div>
-
-        <!--Estructura Calculadora-->
-        <div class="container">
-            <div class="calculadora">
-                <input class="screen">
-                <button class="divi">/</button>
-                <button class="multi">*</button>
-                <button class="menos">-</button>
-                <button class="siete">7</button>
-                <button class="ocho">8</button>
-                <button class="nueve">9</button>
-                <button class="mas">+</button>
-                <button class="cuatro">4</button>
-                <button class="cinco">5</button>
-                <button class="seis">6</button>
-                <button class="uno">1</button>
-                <button class="dos">2</button>
-                <button class="tres">3</button>
-                <button class="igual"></button>
-                <button class="cero">0</button>
-                <button class="punto">.</button>
+                    </thead>
+                </table>
             </div>
+
+            <div class="tablaHis">
+                <table id="tabla">
+
+                </table>
+            </div>
+            <button id="Valores">Mostrar Tabla</button>
         </div>
     </main>
     <footer>

@@ -1,0 +1,131 @@
+@import "fonts";
+@import "globals";
+@import "reset";
+
+header {
+    display: flex;
+    justify-content: center;
+    padding: 0.25rem;
+}
+
+h1 {
+
+    text-align: center;
+    border-bottom: 2px solid;
+    border-color: rgb(103, 103, 103);
+}
+#headVal{
+    thead{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        tr{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            th{
+                width: 5rem;
+                height: 1.5rem;
+
+            }
+        }
+    }
+}
+
+div {
+    width: 75%;
+    text-align: center;
+    display: flex;
+
+
+    fieldset {
+        width: 100%;
+        display: flex;
+        border: 2px solid;
+        border-color: rgb(0, 0, 0);
+        border-style: groove;
+
+        #box1 {
+            padding: 12px 16px;
+            width: 50%;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-right: .05rem;
+
+            #selector1,
+            #valor1 {
+                margin-right: 0.25rem;
+                border: 1px solid;
+                width: 50%;
+                padding: 7px 12px;
+                text-align: center;
+                font-size: 14px;
+                background-size: 22px 15px;
+                background-position: right 9px center;
+            }
+        }
+
+        #box2 {
+            width: 50%;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 12px 16px;
+            margin-left: .05rem;
+
+            #selector2,
+            #valor2 {
+                margin-left: 0.25rem;
+                border: 1px solid;
+                width: 50%;
+                padding: 7px 12px;
+                text-align: center;
+                font-size: 14px;
+                background-size: 22px 15px;
+                background-position: right 9px center;
+            }
+        }
+    }
+}
+
+#infoVal {
+    flex-wrap: wrap;
+    width: 100%;
+
+    .tablaValDiv,
+    .tablaHis {
+        width: 50%;
+        justify-content: center;
+
+        .tablaVal {
+            margin-left: 0.75rem;
+            vertical-align: top;
+        }
+    }
+
+    .tablaHis {
+        width: 50%;
+
+    }
+
+
+    th,
+    td {
+        border: 1px solid;
+    }
+    #Valores {
+
+        height: 25px;
+        width: 100px;
+    }
+
+}
+
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 1.25rem;
+    margin-top: 1.25rem;
+}

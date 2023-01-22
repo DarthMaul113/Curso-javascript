@@ -1,7 +1,11 @@
 //El boton  debe llamar a tabla valores
 let button = document.querySelector('#Valores');
+let clicked = false;
 button.addEventListener('click', () => {
-    tablaIndicadores();
+    if (!clicked) {
+        clicked = true
+        tablaIndicadores();
+    }
 });
 
 window.onload = Indicators();
@@ -11,9 +15,13 @@ function Indicators() {
     }).then(
         function (indicator) {
             //Captura valor del indicador desde la api
+            document.getElementById("UF").innerHTML = indicator.uf.valor
+            document.getElementById("EURO").innerHTML = indicator.euro.valor
+            document.getElementById("DOLAR").innerHTML = indicator.dolar.valor
+            document.getElementById("UTM").innerHTML = indicator.utm.valor
             document.getElementById("UF").value = indicator.uf.valor
-            document.getElementById("Euro").value = indicator.euro.valor
-            document.getElementById("Dolar").value = indicator.dolar.valor
+            document.getElementById("EURO").value = indicator.euro.valor
+            document.getElementById("DOLAR").value = indicator.dolar.valor
             document.getElementById("UTM").value = indicator.utm.valor
             return indicator
         }
@@ -21,23 +29,12 @@ function Indicators() {
         console.log("Requestfailed", error)
     })
 
-    //Historial de valores segun datos de local storage
-    let valUF = JSON.parse(localStorage.getItem("UF"))
-    let valUTM = JSON.parse(localStorage.getItem("UTM"))
-    let valDolar = JSON.parse(localStorage.getItem("DOLAR"))
-    let valEuro = JSON.parse(localStorage.getItem("EURO"))
-    document.getElementById("iniUF").innerText = "El valor de la " + valUF.tipo + " fue de " + valUF.valor + " CLP el dia " + valUF.fecha
-    document.getElementById("iniUTM").innerText = "El valor de la " + valUTM.tipo + " fue de " + valUTM.valor + " CLP el dia " + valUTM.fecha
-    document.getElementById("iniDolar").innerText = "El valor del " + valDolar.tipo + " fue de " + valDolar.valor + " CLP el dia " + valDolar.fecha
-    document.getElementById("iniEuro").innerText = "El valor del " + valEuro.tipo + " fue de " + valEuro.valor + " CLP el dia " + valEuro.fecha
-
 
 }
 
 var intervalId = window.setInterval(function () {
     switcher();
 }, 1000);
-
 document.getElementById("selector1").addEventListener("click", switcher)
 
 function switcher() {
@@ -46,8 +43,8 @@ function switcher() {
     let valSelector = document.getElementById("selector1").value;
     let uf = document.getElementById("UF").value
     let utm = document.getElementById("UTM").value
-    let dolar = document.getElementById("Dolar").value
-    let euro = document.getElementById("Euro").value
+    let dolar = document.getElementById("DOLAR").value
+    let euro = document.getElementById("EURO").value
     let valor1 = document.getElementById("valor1").value
     let res = 0
 
@@ -73,6 +70,7 @@ function switcher() {
             res = "error"
             break
     }
+
 }
 
 function tablaIndicadores() {
@@ -81,14 +79,15 @@ function tablaIndicadores() {
     //Declaracion de variables
     let uf = document.getElementById("UF").value
     let utm = document.getElementById("UTM").value
-    let dolar = document.getElementById("Dolar").value
-    let euro = document.getElementById("Euro").value
+    let dolar = document.getElementById("DOLAR").value
+    let euro = document.getElementById("EURO").value
     let hoy = `${fecha.getDate()}-${fecha.getMonth() + 1}-${fecha.getFullYear()}`;
     let hora = `${fecha.getHours()}:${(fecha.getMinutes() < 10 ? '0' : '') + fecha.getMinutes()}`;
     let tipo
     let valor
     let registroValores = [];
 
+    //------Tabla Indicadores Actuales------
     //Crear tabla donde se almacenan los datos
     const crearVal = () => {
         let valTablaDiv = document.querySelector("div.tablaValDiv")
@@ -119,8 +118,19 @@ function tablaIndicadores() {
 
             guardarStorage(registroValores[index].tipo, obj)
 
-
-            //Llamada a los objetos que almacenan los datos
+            //Blueprint de tabla de valores actuales
+            let html = `
+            <thead class="tablaValHead">
+                <tr >
+                    <th>Tipo</th>
+                    <th>Valor</th>
+                    <th>Día</th>
+                    <th>Hora</th>
+                </tr>
+            </thead>
+            `
+            document.getElementById("tablaActual").innerHTML = html
+            //Llamada a los objetos que almacenan los datos y asignacion a elemento html
             valTipo.innerText = registroValores[index].tipo
             valValor.innerText = registroValores[index].valor
             valDia.innerText = registroValores[index].fecha
@@ -175,4 +185,32 @@ function tablaIndicadores() {
     }
     //Se llama a la tabla
     crearVal()
+
+    //------Tabla Indicadores Historial------
+    //Historial de valores segun datos de local storage
+    let valUF = JSON.parse(localStorage.getItem("UF"))
+    let valUTM = JSON.parse(localStorage.getItem("UTM"))
+    let valDolar = JSON.parse(localStorage.getItem("DOLAR"))
+    let valEuro = JSON.parse(localStorage.getItem("EURO"))
+    const valArray = [valUF, valUTM, valDolar, valEuro]
+
+    const crearTablaHis = () => {
+        let html = `
+         <tr>
+             <th>Tipo</th>
+             <th>Valor</th>
+             <th>Día</th>
+         </tr>`
+        for (let index = 0; index < valArray.length; index++) {
+            html += `
+             <tr>
+                 <th> ${valArray[index].tipo}</th>
+                 <th> ${valArray[index].valor}</th>
+                 <th> ${valArray[index].fecha}</th>
+             </tr>`
+
+        }
+        return html
+    }
+    document.getElementById('tabla').innerHTML = crearTablaHis();
 }

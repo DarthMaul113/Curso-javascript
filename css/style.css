@@ -1,51 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Sofia+Sans&display=swap");
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-.container fieldset{
-    width: 75%;
-    text-align: center;
-}
-fieldset{
-    display: flex;
-    justify-content: space-evenly;
-}
-.container {
-    display: flex;
-    justify-content: center;
-    margin: 3% 10% 0 10%;
+  font-family: "Sofia Sans", sans-serif;
+  background-color: #939496;
+  color: #FFFFFF;
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
 }
 
-.calculadora {
-    width: 15rem;
-    height: 25rem;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    grid-template-areas:
-        "screen screen screen screen"
-        "divi divi multi menos"
-        "siete ocho nueve mas"
-        "cuatro cinco seis mas"
-        "uno dos tres igual"
-        "cero cero punto igual";
-    border: solid 5px black;
+header {
+  display: flex;
+  justify-content: center;
+  padding: 0.25rem;
 }
-.siete { grid-area: siete; }
-.ocho { grid-area: ocho; }
-.nueve { grid-area: nueve; }
-.cuatro { grid-area: cuatro; }
-.cinco { grid-area: cinco; }
-.seis { grid-area: seis; }
-.mas { grid-area: mas; }
-.divi { grid-area: divi; }
-.multi { grid-area: multi; }
-.menos { grid-area: menos; }
-.screen { grid-area: screen; }
-.uno { grid-area: uno; }
-.dos { grid-area: dos; }
-.tres { grid-area: tres; }
-.igual { grid-area: igual; }
-.cero { grid-area: cero; }
-.punto { grid-area: punto; }
+
+h1 {
+  text-align: center;
+  border-bottom: 2px solid;
+  border-color: rgb(103, 103, 103);
+}
+
+#headVal thead {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+#headVal thead tr {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+#headVal thead tr th {
+  width: 5rem;
+  height: 1.5rem;
+}
+
+div {
+  width: 75%;
+  text-align: center;
+  display: flex;
+}
+div fieldset {
+  width: 100%;
+  display: flex;
+  border: 2px solid;
+  border-color: rgb(0, 0, 0);
+  border-style: groove;
+}
+div fieldset #box1 {
+  padding: 12px 16px;
+  width: 50%;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-right: 0.05rem;
+}
+div fieldset #box1 #selector1,
+div fieldset #box1 #valor1 {
+  margin-right: 0.25rem;
+  border: 1px solid;
+  width: 50%;
+  padding: 7px 12px;
+  text-align: center;
+  font-size: 14px;
+  background-size: 22px 15px;
+  background-position: right 9px center;
+}
+div fieldset #box2 {
+  width: 50%;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 12px 16px;
+  margin-left: 0.05rem;
+}
+div fieldset #box2 #selector2,
+div fieldset #box2 #valor2 {
+  margin-left: 0.25rem;
+  border: 1px solid;
+  width: 50%;
+  padding: 7px 12px;
+  text-align: center;
+  font-size: 14px;
+  background-size: 22px 15px;
+  background-position: right 9px center;
+}
+
+#infoVal {
+  flex-wrap: wrap;
+  width: 100%;
+}
+#infoVal .tablaValDiv,
+#infoVal .tablaHis {
+  width: 50%;
+  justify-content: center;
+}
+#infoVal .tablaValDiv .tablaVal,
+#infoVal .tablaHis .tablaVal {
+  margin-left: 0.75rem;
+  vertical-align: top;
+}
+#infoVal .tablaHis {
+  width: 50%;
+}
+#infoVal th,
+#infoVal td {
+  border: 1px solid;
+}
+#infoVal #Valores {
+  height: 25px;
+  width: 100px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 1.25rem;
+  margin-top: 1.25rem;
+}/*# sourceMappingURL=style.css.map */
